@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('diagnoses', function (Blueprint $table) {
-            $table->foreignId('patient_id');
+            $table->foreignId('patient_id')->after('note');
             $table->foreignId('user_id');
         });
     }
