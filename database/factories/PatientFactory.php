@@ -17,7 +17,12 @@ class PatientFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'card_num' => $this->faker->unique()->randomNumber($nbDigits = NULL, $strict = false),
+            'name' => $this->faker->name(),
+            'date_of_birth' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+            'gender' => $this->faker->randomElement($array = array ('m','f','-')),
+            'adress'=> $this->faker->address(),
+            'email' => $this->faker->unique()->safeEmail()
         ];
     }
 }

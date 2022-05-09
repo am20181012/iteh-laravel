@@ -17,7 +17,9 @@ class TherapyFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'type_of_therapy' => $this->faker->word(),
+            'name_of_therapy' => $this->faker->word(),
+            'description' => $this->faker->sentence()
         ];
     }
 }
