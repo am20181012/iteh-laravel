@@ -17,4 +17,14 @@ class Patient extends Model
         'adress',
         'email'
     ];
+
+    public function diagnoses()
+    {
+        return $this->hasMany(Diagnosis::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

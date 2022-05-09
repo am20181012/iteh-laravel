@@ -17,4 +17,19 @@ class Diagnosis extends Model
         'hospitalization',
         'note'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class);
+    }
+
+    public function therapies()
+    {
+        return $this->hasMany(Therapy::class);
+    }
 }

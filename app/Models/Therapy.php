@@ -15,4 +15,9 @@ class Therapy extends Model
         'name_of_therapy',
         'description'
     ];
+
+    public function diagnosis()
+    {
+        return $this->belongsTo(Diagnosis::class);
+    }
 }
