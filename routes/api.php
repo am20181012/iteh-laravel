@@ -3,7 +3,10 @@
 use App\Http\Controllers\DiagnosisController;
 use App\Http\Controllers\DiagnosisTherapyController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\PatientDiagnosisController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserDiagnosisController;
+use App\Http\Controllers\UserPatientController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +35,9 @@ Route::delete('/patients/{id}', [PatientController::class, 'destroy']);
 Route::resource('diagnoses', DiagnosisController::class)->only(['index', 'show', 'store', 'update']);
 
 Route::resource('diagnoses.therapies', DiagnosisTherapyController::class);
+
+Route::resource('users.patients', UserPatientController::class)->only(['index']);
+
+Route::resource('users.diagnoses', UserDiagnosisController::class)->only(['index']);
+
+Route::resource('patients.diagnoses', PatientDiagnosisController::class)->only(['index']);
