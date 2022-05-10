@@ -15,7 +15,9 @@ class Diagnosis extends Model
         'description',
         'cause',
         'hospitalization',
-        'note'
+        'note',
+        'patient_id',
+        'user_id'
     ];
 
     public function user()
