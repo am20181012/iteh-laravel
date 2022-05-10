@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\DiagnosisController;
 use App\Http\Controllers\DiagnosisTherapyController;
 use App\Http\Controllers\PatientController;
