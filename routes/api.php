@@ -33,15 +33,26 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/users/{id}', [UserController::class, 'show']);
 
-Route::resource('patients', PatientController::class)->only(['index', 'show', 'store', 'update']);
-Route::delete('/patients/{id}', [PatientController::class, 'destroy']);
-
-Route::resource('diagnoses', DiagnosisController::class)->only(['index', 'show', 'store', 'update']);
-
-Route::resource('diagnoses.therapies', DiagnosisTherapyController::class);
-
+//rute za pregled svih pacijenata, dijagnoza i terapija kao i za pojedinacan pregled
+Route::resource('patients', PatientController::class)->only(['index', 'show']);
+Route::resource('diagnoses', DiagnosisController::class)->only(['index', 'show']);
 Route::resource('users.patients', UserPatientController::class)->only(['index']);
-
 Route::resource('users.diagnoses', UserDiagnosisController::class)->only(['index']);
-
 Route::resource('patients.diagnoses', PatientDiagnosisController::class)->only(['index']);
+Route::resource('diagnoses.therapies', DiagnosisTherapyController::class)->only(['index', 'show']);
+
+//rute kojima je ogranicen pristup
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/profile', function (Request $request) {
+        return auth()->user();
+    });
+
+    Route::resource('patients', PatientController::class)->only(['store', 'update']);
+    Route::delete('/patient/{id}', [PatientController::class, 'destroy']);
+
+    Route::resource('diagnoses', DiagnosisController::class)->only(['store', 'update']);
+
+    Route::resource('diagnoses.therapies', DiagnosisTherapyController::class)->only(['store', 'update', 'destroy']);
+
+});
+
