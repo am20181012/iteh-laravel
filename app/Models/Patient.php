@@ -15,7 +15,8 @@ class Patient extends Model
         'date_of_birth',
         'gender',
         'adress',
-        'email'
+        'email',
+        'user_id'
     ];
 
     public function diagnoses()
