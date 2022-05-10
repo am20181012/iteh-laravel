@@ -54,5 +54,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::resource('diagnoses.therapies', DiagnosisTherapyController::class)->only(['store', 'update', 'destroy']);
 
+    Route::post('/logout', [AuthController::class, 'logout']);
+
 });
 
