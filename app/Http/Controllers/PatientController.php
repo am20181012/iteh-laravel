@@ -6,6 +6,7 @@ use App\Http\Resources\PatientCollection;
 use App\Http\Resources\PatientResource;
 use App\Models\Patient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class PatientController extends Controller
@@ -62,7 +63,7 @@ class PatientController extends Controller
             'gender' => $request->gender,
             'adress' => $request->adress,
             'email' => $request->email,
-            'user_id' => $request->user_id
+            'user_id' => Auth::user()->id
         ]);
 
         return response()->json([

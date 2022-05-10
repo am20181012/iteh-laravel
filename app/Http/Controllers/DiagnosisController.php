@@ -6,6 +6,7 @@ use App\Http\Resources\DiagnosisCollection;
 use App\Http\Resources\DiagnosisResource;
 use App\Models\Diagnosis;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class DiagnosisController extends Controller
@@ -61,7 +62,7 @@ class DiagnosisController extends Controller
             'hospitalization' => $request->hospitalization,
             'note' => $request->note,
             'patient_id' => $request->patient_id,
-            'user_id' => $request->user_id
+            'user_id' => Auth::user()->id
         ]);
 
         return response()->json([
