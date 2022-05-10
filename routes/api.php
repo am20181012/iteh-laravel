@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DiagnosisController;
+use App\Http\Controllers\DiagnosisTherapyController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -26,3 +28,7 @@ Route::get('/users/{id}', [UserController::class, 'show']);
 
 Route::resource('patients', PatientController::class)->only(['index', 'show', 'store', 'update']);
 Route::delete('/patients/{id}', [PatientController::class, 'destroy']);
+
+Route::resource('diagnoses', DiagnosisController::class)->only(['index', 'show', 'store', 'update']);
+
+Route::resource('diagnoses.therapies', DiagnosisTherapyController::class);
